@@ -1,0 +1,2 @@
+# CurveFitPredict
+对sklearn中的曲线拟合函数进行了整理，提供了曲线拟合的简单的统一接口

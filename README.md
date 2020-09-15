@@ -84,7 +84,7 @@ print("r2分数：",myfunctool.get_model_r2score(info))
 #显示x=0-6时的预测函数和真实值的对比图
 myfunctool.show_func(info,0,6)
 ````
-3.1 拟合y=4x^2+3x函数曲线形状：
+3.1 拟合y=4x^2+3x函数曲线形状（任意函数，这里以4x^2+3x为例）：
 ----
 ![函数预测](https://files-cdn.cnblogs.com/files/halone/3.bmp)  
 

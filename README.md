@@ -83,10 +83,10 @@ print("r2分数：",myfunctool.get_model_r2score(info))
 myfunctool.show_func(info,0,6)
 ````
 拟合y=4x^2+3x函数曲线形状：
-![y=4x^2+3x预测](https://files-cdn.cnblogs.com/files/halone/3.bmp)  
+![函数预测](https://files-cdn.cnblogs.com/files/halone/3.bmp)  
 
 预测y=4x^2+3x函数的计算结果：
-![y=4x^2+3x预测结果](https://files-cdn.cnblogs.com/files/halone/4.bmp)  
+![函数预测结果](https://files-cdn.cnblogs.com/files/halone/4.bmp)  
 
 4.变量函数拟合
 -----

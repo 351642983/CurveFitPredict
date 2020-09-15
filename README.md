@@ -57,6 +57,12 @@ print("预测函数公式为:",myfunctool.get_func(info))
 #显示斐波那契数列拟合函数和真实值对比，展示预测函数x从1到比原数列预测多一个的值
 myfunctool.show_func(info,1,len(info[-1])+1)
 ````
+拟合并预测斐波那契数列曲线形状：
+![斐波那契数列预测](https://files-cdn.cnblogs.com/files/halone/1.bmp)  
+
+预测斐波那契数列的结果：
+![斐波那契数列预测结果](https://files-cdn.cnblogs.com/files/halone/2.bmp)  
+
 3.曲线拟合
 ----
 下面是一个拟合任意曲线的例子，以y=4x^2+3x为例，给出当x=0,1,2,3,4时候以及对应的y值，根据给定的值拟合曲线
@@ -76,6 +82,12 @@ print("r2分数：",myfunctool.get_model_r2score(info))
 #显示x=0-6时的预测函数和真实值的对比图
 myfunctool.show_func(info,0,6)
 ````
+拟合y=4x^2+3x函数曲线形状：
+![y=4x^2+3x预测](https://files-cdn.cnblogs.com/files/halone/3.bmp)  
+
+预测y=4x^2+3x函数的计算结果：
+![y=4x^2+3x预测结果](https://files-cdn.cnblogs.com/files/halone/4.bmp)  
+
 4.变量函数拟合
 -----
 同sklearn

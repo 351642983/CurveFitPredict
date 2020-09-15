@@ -115,14 +115,14 @@ myfunctool.show_func(info,1,len(info[-1])+1)
 print(myfunctool.get_func(info))
 print("r2分数：",myfunctool.get_model_r2score(info))
 ````
-4.1 拟合上述周期函数数列的曲线：
+4.1 拟合上述周期数列的曲线：
 ----
 ![周期数列拟合](https://files-cdn.cnblogs.com/files/halone/5.bmp)  
 
-4.2 预测y=4x^2+3x函数的计算结果：
+4.2 预测周期数列结果：
 ----
 ![周期数列预测结果](https://files-cdn.cnblogs.com/files/halone/6.bmp)  
 
-5.变量函数拟合
+5.多变量函数拟合
 -----
-同sklearn
+同sklearn的极端随机森林回归，随机森林回归，最小二乘法，梯度上升和梯度下降，详细用法见代码示例

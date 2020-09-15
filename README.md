@@ -115,11 +115,11 @@ myfunctool.show_func(info,1,len(info[-1])+1)
 print(myfunctool.get_func(info))
 print("r2分数：",myfunctool.get_model_r2score(info))
 ````
-3.1 拟合上述周期函数数列的曲线：
+4.1 拟合上述周期函数数列的曲线：
 ----
 ![周期数列拟合](https://files-cdn.cnblogs.com/files/halone/5.bmp)  
 
-3.2 预测y=4x^2+3x函数的计算结果：
+4.2 预测y=4x^2+3x函数的计算结果：
 ----
 ![周期数列预测结果](https://files-cdn.cnblogs.com/files/halone/6.bmp)  
 

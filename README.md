@@ -40,17 +40,21 @@ from tools import myfunctool
 ----
 下面是一个拟合斐波那契数列的例子,提供了斐波那契数列前19个值，其中第18个值是缺失的，下面是补全第18个值并预测20-22个值的斐波那契值
 ````python
-print("---------数列拟合预测-------")
 #斐波那契数列前19个数，并在18个位置存在缺失值
 x=[1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,None,6765]
+
 #selectmode为1时表示使用多项式函数拟合，2表示利用整合的函数拟合，3表示自动判断二者拟合效果并给出拟合范围内最好的类别，默认为3
 info=myfunctool.find_logical(x,selectmode=2)
+
 print("用此公式求得原数列值:",myfunctool.func_general(info,list(range(1,len(info[-1])+1))),"  拟合得分:",info[-3])
+
 #预测该斐波那契数列的之后的3个值 (真实值为:10946,17711,28657)
 print("用此公式计算的后3个数列值:",myfunctool.func_general(info,[info[-1][-1]+1,info[-1][-1]+2,info[-1][-1]+3]))
+
 #预测该斐波那契数列中的缺失值 (真实值为:4181)
 print("用此公式预测缺失值:",myfunctool.func_general(info,[info[-1][-1]-1]))
 print("预测函数公式为:",myfunctool.get_func(info))
+
 #显示斐波那契数列拟合函数和真实值对比图
 myfunctool.show_func(info,1,len(info[-1])+1)
 ````
@@ -67,7 +71,6 @@ myfunctool.show_func(info,1,len(info[-1])+1)
 下面是一个拟合任意曲线的例子，以y=4x^2+3x为例，给出当x=0,1,2,3,4时候以及对应的y值，根据给定的值拟合曲线
 ````python
 #随便想一个函数,例如下面的:y=4x^2+3x,并给出任意对应的x和y的值
-print("---------曲线拟合预测-------")
 x=[0,1,2,3,4]
 y=[0,7,22,45,76]
 info=myfunctool.auto_func(x,y)
@@ -76,6 +79,7 @@ print("用此公式求得原值:",myfunctool.func_general(info,info[-1]),"  拟�
 print("x=5时，函数的预测值:",myfunctool.func_general(info,[5]))
 print("预测拟合曲线函数为:",myfunctool.get_func(info))
 print("r2分数：",myfunctool.get_model_r2score(info))
+
 #显示x=0-6时的预测函数和真实值的对比图
 myfunctool.show_func(info,0,6)
 ````
@@ -102,7 +106,6 @@ info=myfunctool.find_logical([490, 477, 467, 458, 450, 442, 433, 426, 419, 413, 
      650, 656, 659, 659, 655, 649, 640, 632, 626, 621, 614, 603, 590, 575, 564, 550, 530, 519, 507, 495, 484,
      472, 462, 452, 445, 437, 430, 423, 417, 423, 442, 445, 435, 423, 422, 431, 436, 428, 413, 401, 390, 381,
      373, 367, 363, 364, 365, 367, 371, 378, 396, 411, 428])
-# print("用此公式求得原值:",myfunctool.func_general(info,info[-1]),info[-3])
 print("用此公式计算的后3个值:",myfunctool.func_general(info,[info[-1][-1]+1,info[-1][-1]+2,info[-1][-1]+3]))
 myfunctool.show_func(info,1,len(info[-1])+1)
 print(myfunctool.get_func(info))

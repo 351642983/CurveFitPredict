@@ -43,14 +43,15 @@ from tools import myfunctool
 print("---------数列拟合预测-------")
 #斐波那契数列前19个数，并在18个位置存在缺失值
 x=[1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,None,6765]
-info=myfunctool.find_logical(x,selectmode=2)#selectmode为1时表示使用多项式函数拟合，selectmode=2表示利用整合的函数拟合，selectmode=3表示自动判断二者拟合效果并给出拟合范围内最好的值，默认为3
+#selectmode为1时表示使用多项式函数拟合，2表示利用整合的函数拟合，3表示自动判断二者拟合效果并给出拟合范围内最好的类别，默认为3
+info=myfunctool.find_logical(x,selectmode=2)
 print("用此公式求得原数列值:",myfunctool.func_general(info,list(range(1,len(info[-1])+1))),"  拟合得分:",info[-3])
 #预测该斐波那契数列的之后的3个值 (真实值为:10946,17711,28657)
 print("用此公式计算的后3个数列值:",myfunctool.func_general(info,[info[-1][-1]+1,info[-1][-1]+2,info[-1][-1]+3]))
 #预测该斐波那契数列中的缺失值 (真实值为:4181)
 print("用此公式预测缺失值:",myfunctool.func_general(info,[info[-1][-1]-1]))
 print("预测函数公式为:",myfunctool.get_func(info))
-#显示斐波那契数列拟合函数和真实值对比，展示预测函数x从1到比原数列预测多一个的值
+#显示斐波那契数列拟合函数和真实值对比图
 myfunctool.show_func(info,1,len(info[-1])+1)
 ````
 2.1 拟合并预测斐波那契数列曲线形状：

@@ -154,10 +154,10 @@ def show_func(fit_coef,func,x_min,x_max,exactvalue=201,info=None,show=True):
     np.set_printoptions(suppress=True)
     x = np.linspace(x_min, x_max, exactvalue)
     y = eval(func)(x,*fit_coef)
-    plt.plot(x, y, "r",label="predict", lw=4)
+    plt.plot(x, y, "r",label="predict", lw=2)
     if info:
         # print(info[-1],info[-2])
-        plt.plot([one for one in info[-1] if one!=None], [one for one in info[-2] if one!=None], "lightgreen",label="real", lw=2)
+        plt.scatter([one for one in info[-1] if one!=None], [one for one in info[-2] if one!=None], c="blue",label="real", marker='o')
     plt.legend()
     if(show):
         plt.show()

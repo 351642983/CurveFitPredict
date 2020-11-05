@@ -66,7 +66,8 @@ def auto_func(x, y, inpercent=100, limitfunc=lambda x: x ** 3,selectmode=3):
     else:
         return 2, list(fit_coef2), func,score2, y, list(x)
 
-
+# from tools import basefilehandle as fh
+# import os
 # 展示函数图像
 def show_func(info, x_min, x_max, exactvalue=201,savePic_Path=None):
     show=True
@@ -77,9 +78,12 @@ def show_func(info, x_min, x_max, exactvalue=201,savePic_Path=None):
     else:
         plt=func2.show_func(info[1], info[2], x_min, x_max, exactvalue,info,show=show)
     if(savePic_Path):
+        # if( not os.path.exists(fh.get_path_file_subpath(savePic_Path))):
+        #     fh.createDir(fh.get_path_file_subpath(savePic_Path))
         plt.savefig(savePic_Path)
+        plt.clf()
 
-
+# print(fh.get_path_file_subpath(r"H:\pycharm project\YearBooks\tools\myfunctool.py"))
 
 
 # 得到函数公式

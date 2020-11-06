@@ -41,6 +41,8 @@ def find_logical(y, inpercent=100, limitfunc=lambda x: x ** 3,selectmode=3):
 
 
 def func_general(info, x):
+    if(info[-3]==-1):
+        return ['无法分析结果']
     if info[0] == 1:
         return func1.func_general(info[1], x)
     else:
@@ -57,6 +59,7 @@ def auto_func(x, y, inpercent=100, limitfunc=lambda x: x ** 3,selectmode=3):
         fit_coef2, func, score2 = func2.polyfit(x, y, limitfunc)
     elif selectmode == 1:
         fit_coef, alist, score = func1.auto_ax_bfit(x, y, inpercent)
+
     if (score == None or math.isnan(score)):
         score = -1
     if (score2 == None or math.isnan(score2)):
@@ -70,6 +73,8 @@ def auto_func(x, y, inpercent=100, limitfunc=lambda x: x ** 3,selectmode=3):
 # import os
 # 展示函数图像
 def show_func(info, x_min, x_max, exactvalue=201,savePic_Path=None):
+    if(info[-3]==-1):
+        return
     show=True
     if savePic_Path:
         show=False
@@ -88,6 +93,8 @@ def show_func(info, x_min, x_max, exactvalue=201,savePic_Path=None):
 
 # 得到函数公式
 def get_func(info):
+
+    # print(info)
     result = "F(x)="
     if info[0] == 1:
         lennum = len(info[1])
@@ -101,26 +108,30 @@ def get_func(info):
             elif i == (lennum - 2):
                 result += "X"
     else:
-        if info[2] == "func_exxaxx":
-            result += "(%e)*e^(%e)X+(%e)X^(%e)+(%e)X^(%e)X+(%e)"% tuple(info[1])
-        elif info[2] == "func_exxa":
-            result += "(%e)*e^(%e)X+(%e)X^(%e)+(%e)" % tuple(info[1])
-        elif info[2] == "func_exxx":
-            result += "(%e)*e^(%e)X+(%e)X^(%e)X+(%e)"% tuple(info[1])
-        elif info[2] == "func_xaxx":
-            result += "(%e)X^(%e)+(%e)X^(%e)X+(%e)" % tuple(info[1])
-        elif info[2] == "func_ex":
-            result += "(%e)*e^(%e)X+(%e)"% tuple(info[1])
-        elif info[2] == "func_xa":
-            result += "(%e)X^(%e)+(%e)" % tuple(info[1])
-        elif info[2] == "func_xx":
-            result += "(%e)X^(%e)X+(%e)"% tuple(info[1])
-        elif info[2] == "func_sinx":
-            result += "(%e)*sin((%e)*x+(%e))+(%e)*x+(%e)" % (info[1][0], info[1][1]*func2.math.pi, info[1][2], info[1][3], info[1][4])
-        elif info[2] == "func_gauss":
-            result += "(%e)*e^(-(x-(%e))**2/(2*(%e)**2))+(%e)" % tuple(info[1])
-        elif info[2] == "func_fourier":
-            result += "傅里叶级数参数:"+str(tuple(info[1]))
+        try:
+            if info[2] == "func_exxaxx":
+                result += "(%e)*e^(%e)X+(%e)X^(%e)+(%e)X^(%e)X+(%e)"% tuple(info[1])
+            elif info[2] == "func_exxa":
+                result += "(%e)*e^(%e)X+(%e)X^(%e)+(%e)" % tuple(info[1])
+            elif info[2] == "func_exxx":
+                result += "(%e)*e^(%e)X+(%e)X^(%e)X+(%e)"% tuple(info[1])
+            elif info[2] == "func_xaxx":
+                result += "(%e)X^(%e)+(%e)X^(%e)X+(%e)" % tuple(info[1])
+            elif info[2] == "func_ex":
+                result += "(%e)*e^(%e)X+(%e)"% tuple(info[1])
+            elif info[2] == "func_xa":
+                result += "(%e)X^(%e)+(%e)" % tuple(info[1])
+            elif info[2] == "func_xx":
+                result += "(%e)X^(%e)X+(%e)"% tuple(info[1])
+            elif info[2] == "func_sinx":
+                result += "(%e)*sin((%e)*x+(%e))+(%e)*x+(%e)" % (info[1][0], info[1][1]*func2.math.pi, info[1][2], info[1][3], info[1][4])
+            elif info[2] == "func_gauss":
+                result += "(%e)*e^(-(x-(%e))**2/(2*(%e)**2))+(%e)" % tuple(info[1])
+            elif info[2] == "func_fourier":
+                result += "傅里叶级数参数:"+str(tuple(info[1]))
+        except:
+            result="分析无任何拟合结果"
+
     return result
 
 #多参数预测模型(数集小)

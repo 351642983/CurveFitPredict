@@ -84,7 +84,9 @@ def polyfit(x, y,limitfunc=lambda x:x**3):
     warnings.filterwarnings("ignore")
     for i,one in enumerate(allfunc):
         try:
+
             fit_coef, pcov = curve_fit(one, x, y ,maxfev=15000)
+            id += 1
             fit_coef_list.append(fit_coef)
             pcov_list.append(pcov)
             result=one([x],*fit_coef)[0]
@@ -94,18 +96,22 @@ def polyfit(x, y,limitfunc=lambda x:x**3):
             score=a*(1-b)-downs
 
             scorelist.append(score)
-            id+=1
+
             if(score>maxnh):
                 maxnh=score
                 suit=id-1
                 suiti=i
         except Exception:
+            pass
+        finally:
             if one == func_fourier:
                 try:
                     global t
                     ay=np.array(y)
                     t=abs(np.where(ay==max(y))[0][0]-np.where(ay==min(y))[0][0])
+
                     fit_coef, pcov = curve_fit(one, x, y,[1.0]*(80 if len(x)-2>80 else len(x)-2), maxfev=15000)
+                    id += 1
                     fit_coef_list.append(fit_coef)
                     pcov_list.append(pcov)
                     result = one([x], *fit_coef)[0]
@@ -114,17 +120,16 @@ def polyfit(x, y,limitfunc=lambda x:x**3):
                     a, b = stats.pearsonr(result, y)
                     score = a * (1 - b) - downs
                     scorelist.append(score)
-                    id += 1
+
                     if (score > maxnh):
                         maxnh = score
                         suit = id - 1
                         suiti = i
-                except:
+                except Exception as w:
+                    print(w)
                     pass
-            pass
         # print(one, score)
     warnings.filterwarnings("default")
-    # print(allfunc[suiti])
     if(len(scorelist)==0):
         return 0,0,-1
     #参数

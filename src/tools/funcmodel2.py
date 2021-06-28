@@ -88,18 +88,19 @@ def polyfit(x, y,limitfunc=lambda x:x**3):
             fit_coef, pcov = curve_fit(one, x, y ,maxfev=15000)
             id += 1
             fit_coef_list.append(fit_coef)
+            scorelist.append(0)
             pcov_list.append(pcov)
             result=one([x],*fit_coef)[0]
             finalone=one([len(x)+1],*fit_coef)[0]
             downs=0.5 if abs(finalone-result[-1])>limitfunc(max(result)-min(result)) else 0
             a,b=stats.pearsonr(result, y)
             score=a*(1-b)-downs
-
-            scorelist.append(score)
+            scorelist[len(scorelist) - 1] = score
+            # scorelist.append(score)
 
             if(score>maxnh):
                 maxnh=score
-                suit=id-1
+                suit=len(fit_coef_list) -1
                 suiti=i
         except Exception:
             pass
@@ -112,6 +113,7 @@ def polyfit(x, y,limitfunc=lambda x:x**3):
 
                     fit_coef, pcov = curve_fit(one, x, y,[1.0]*(80 if len(x)-2>80 else len(x)-2), maxfev=15000)
                     id += 1
+                    scorelist.append(0)
                     fit_coef_list.append(fit_coef)
                     pcov_list.append(pcov)
                     result = one([x], *fit_coef)[0]
@@ -119,11 +121,12 @@ def polyfit(x, y,limitfunc=lambda x:x**3):
                     downs = 0.5 if abs(finalone - result[-1]) > limitfunc(max(result) - min(result)) else 0
                     a, b = stats.pearsonr(result, y)
                     score = a * (1 - b) - downs
-                    scorelist.append(score)
+                    scorelist[len(scorelist)-1]=score
+                    # scorelist.append(score)
 
                     if (score > maxnh):
                         maxnh = score
-                        suit = id - 1
+                        suit = len(fit_coef_list) - 1
                         suiti = i
                 except Exception as w:
                     print(w)
